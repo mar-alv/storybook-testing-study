@@ -1,36 +1,49 @@
-import { composeStories } from '@storybook/nextjs-vite';
-import { render, screen } from '@testing-library/react';
-import { describe, expect, it } from 'vitest';
-import * as stories from '@/components/pokemon/pokemon-card/pokemon-card.stories';
+import { render, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
+import { describe, expect, it, vi } from "vitest";
+import { PokemonCard } from "@/components/pokemon/pokemon-card/pokemon-card";
 
-const { Default, SingleDigitId, LongName, SelectsOnClick, SelectsWithKeyboard } =
-  composeStories(stories);
-
-describe('PokemonCard', () => {
-  it('shows the number and the formatted name', () => {
-    render(<Default />);
-    expect(screen.getByRole('button', { name: '#025 Pikachu' })).toBeInTheDocument();
+describe("PokemonCard", () => {
+  it("shows the number and the formatted name", () => {
+    render(<PokemonCard id={25} name="pikachu" onSelect={vi.fn()} />);
+    expect(
+      screen.getByRole("button", { name: /#025\s*Pikachu/ }),
+    ).toBeInTheDocument();
   });
 
-  it('pads single digit ids', () => {
-    render(<SingleDigitId />);
-    expect(screen.getByText('#001')).toBeInTheDocument();
+  it("pads single digit ids", () => {
+    render(<PokemonCard id={1} name="bulbasaur" onSelect={vi.fn()} />);
+    expect(screen.getByText("#001")).toBeInTheDocument();
   });
 
-  it('reuses the click interaction story', async () => {
-    await SelectsOnClick.run();
+  it("selects on click", async () => {
+    const onSelect = vi.fn();
+    render(<PokemonCard id={25} name="pikachu" onSelect={onSelect} />);
+
+    await userEvent.click(screen.getByRole("button"));
+
+    expect(onSelect).toHaveBeenCalledWith("pikachu");
   });
 
-  it('reuses the keyboard interaction story', async () => {
-    await SelectsWithKeyboard.run();
+  it("selects with the keyboard", async () => {
+    const onSelect = vi.fn();
+    render(<PokemonCard id={25} name="pikachu" onSelect={onSelect} />);
+
+    await userEvent.tab();
+    await userEvent.keyboard("{Enter}");
+
+    expect(screen.getByRole("button")).toHaveFocus();
+    expect(onSelect).toHaveBeenCalledTimes(1);
   });
 
   it.each([
-    ['Default', Default],
-    ['SingleDigitId', SingleDigitId],
-    ['LongName', LongName],
-  ])('matches the snapshot for %s', (_, Story) => {
-    const { container } = render(<Story />);
+    ["default", 25, "pikachu"],
+    ["single digit id", 1, "bulbasaur"],
+    ["long name", 1017, "ogerpon-wellspring-mask"],
+  ])("matches the snapshot for %s", (_, id, name) => {
+    const { container } = render(
+      <PokemonCard id={id} name={name} onSelect={vi.fn()} />,
+    );
     expect(container).toMatchSnapshot();
   });
 });

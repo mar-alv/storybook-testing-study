@@ -1,0 +1,28 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Button > matches the snapshot for ghost 1`] = `
+<button
+  class="inline-flex items-center justify-center gap-2 rounded-lg font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-600 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 text-slate-800 hover:bg-slate-100 h-10 px-4 text-sm"
+  type="button"
+>
+  Capturar
+</button>
+`;
+
+exports[`Button > matches the snapshot for primary 1`] = `
+<button
+  class="inline-flex items-center justify-center gap-2 rounded-lg font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-600 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 bg-red-700 text-white hover:bg-red-800 h-10 px-4 text-sm"
+  type="button"
+>
+  Capturar
+</button>
+`;
+
+exports[`Button > matches the snapshot for secondary 1`] = `
+<button
+  class="inline-flex items-center justify-center gap-2 rounded-lg font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-600 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 border border-slate-300 bg-white text-slate-900 hover:bg-slate-50 h-10 px-4 text-sm"
+  type="button"
+>
+  Capturar
+</button>
+`;
