@@ -25,6 +25,13 @@ async function getViolationIds(page: Parameters<typeof openStory>[0]) {
   const results = await new AxeBuilder({ page })
     .include("#storybook-root")
     .analyze();
+
+  results.violations.forEach((violation) => {
+    violation.nodes.forEach((node) => {
+      console.log(violation.id, node.html, node.failureSummary);
+    });
+  });
+
   return results.violations.map((violation) => violation.id);
 }
 
