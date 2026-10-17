@@ -1,36 +1,64 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Pokédex + Storybook: guia de setup
 
-## Getting Started
+Os arquivos estão na mesma estrutura do projeto. Copie as pastas `src`, `e2e`, `.storybook` e os arquivos da raiz, mesclando com o que já existe.
 
-First, run the development server:
+## Pressupostos
+
+- Next.js (App Router), TypeScript e Tailwind v4 (`@import "tailwindcss";` em `src/app/globals.css`).
+- Alias `@/*` apontando para `./src/*` no `tsconfig.json`.
+- `src/app/layout.tsx` já existente. Sugestão: `<html lang="pt-BR">`.
+- `.storybook/main.ts`, `.storybook/preview.ts` e `vitest.config.ts` podem já existir: mescle em vez de sobrescrever.
+
+## Dependências extras
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm i -D msw msw-storybook-addon vitest @vitest/browser-playwright @vitest/coverage-v8 \
+  @vitejs/plugin-react jsdom @testing-library/react @testing-library/user-event \
+  @testing-library/jest-dom @playwright/test playwright @axe-core/playwright
+
+npx msw init public/ --save
+npx playwright install chromium
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Os addons que você já tem cobrem o restante (`addon-vitest`, `addon-a11y`, `addon-docs`, `@chromatic-com/storybook`).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Scripts do package.json
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```json
+{
+  "storybook": "storybook dev -p 6006",
+  "build-storybook": "storybook build",
+  "test": "vitest run",
+  "test:unit": "vitest run --project unit",
+  "test:storybook": "vitest run --project storybook",
+  "test:coverage": "vitest run --coverage",
+  "test:e2e": "playwright test --project app-desktop --project app-mobile",
+  "test:visual": "playwright test --project storybook",
+  "test:visual:update": "playwright test --project storybook --update-snapshots",
+  "chromatic": "chromatic --exit-zero-on-changes"
+}
+```
 
-## Learn More
+## .gitignore
 
-To learn more about Next.js, take a look at the following resources:
+```
+playwright-report/
+test-results/
+coverage/
+storybook-static/
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Mapa dos testes
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+| Tipo | Arquivos |
+| --- | --- |
+| Unitários | `src/lib/*.test.ts`, `src/components/ui/button/button.test.tsx` |
+| Snapshots (Vitest) | `button.test.tsx`, `pokemon-card.test.tsx` (gera `__snapshots__` na primeira execução) |
+| Stories como testes (portable stories) | `pagination.test.tsx`, `pokemon-card.test.tsx` |
+| Integração com mock de rede | `src/components/pokemon/pokedex/pokedex.test.tsx` (MSW em Node) |
+| Interação | funções `play` em todas as `*.stories.tsx` |
+| Acessibilidade | `a11y: { test: 'error' }` no preview, stories `A11y/*` com `test: 'todo'`, `e2e/storybook/accessibility.spec.ts` |
+| Responsividade | stories `Mobile`/`Tablet`, `e2e/app/pokedex.spec.ts` (projeto mobile), `e2e/storybook/visual.spec.ts` |
+| Regressão visual | Chromatic e `e2e/storybook/visual.spec.ts` (baselines com `npm run test:visual:update`) |
+| E2E | `e2e/app/pokedex.spec.ts` com PokeAPI interceptada por `page.route` |
+| Mock de requisições no Storybook | `src/mocks/handlers.ts` + `msw-storybook-addon` |

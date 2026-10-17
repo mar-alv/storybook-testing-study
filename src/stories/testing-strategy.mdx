@@ -6,14 +6,59 @@ import { Meta } from '@storybook/addon-docs/blocks';
 
 Cada story é um cenário reproduzível. O mesmo arquivo alimenta documentação, desenvolvimento, revisão visual e automação.
 
-| Tipo de teste | Onde está | Como roda |
-| --- | --- | --- |
-| Renderização e estados | Stories com `args` (Loading, Disabled, Empty, ApiError) | Painel de testes e `vitest --project storybook` |
-| Interação | Funções `play` (cliques, teclado, foco, paginação, modal) | Aba Interactions e Vitest |
-| Acessibilidade | `addon-a11y` com `test: 'error'` e stories legadas em `A11y/*` | Aba Accessibility, Vitest e Playwright com axe |
-| Regressão visual | Chromatic e `toHaveScreenshot` do Playwright | `npx chromatic` e `playwright test --project storybook` |
-| Responsividade | Stories `Mobile` e `Tablet` com global `viewport` | Toolbar de viewport e snapshots por viewport |
-| Estados via props | Controls em cada story | Aba Controls |
-| Mock de requisições | MSW via `msw-storybook-addon` | Stories de `Pokedex` e `PokemonDetailModal` |
-| Unitários e snapshots | `*.test.ts(x)` com Vitest e `composeStories` | `vitest --project unit` |
-| E2E | Playwright contra o app Next com PokeAPI interceptada | `playwright test --project app-desktop` |
+<table>
+  <thead>
+    <tr>
+      <th>Tipo de teste</th>
+      <th>Onde está</th>
+      <th>Como roda</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Renderização e estados</td>
+      <td>Stories com <code>args</code> (Loading, Disabled, Empty, ApiError)</td>
+      <td>Painel de testes e <code>vitest --project storybook</code></td>
+    </tr>
+    <tr>
+      <td>Interação</td>
+      <td>Funções <code>play</code> (cliques, teclado, foco, paginação, modal)</td>
+      <td>Aba Interactions e Vitest</td>
+    </tr>
+    <tr>
+      <td>Acessibilidade</td>
+      <td><code>addon-a11y</code> com <code>test: 'error'</code> e stories legadas em <code>A11y/*</code></td>
+      <td>Aba Accessibility, Vitest e Playwright com axe</td>
+    </tr>
+    <tr>
+      <td>Regressão visual</td>
+      <td>Chromatic e <code>toHaveScreenshot</code> do Playwright</td>
+      <td><code>npx chromatic</code> e <code>playwright test --project storybook</code></td>
+    </tr>
+    <tr>
+      <td>Responsividade</td>
+      <td>Stories <code>Mobile</code> e <code>Tablet</code> com global <code>viewport</code></td>
+      <td>Toolbar de viewport e snapshots por viewport</td>
+    </tr>
+    <tr>
+      <td>Estados via props</td>
+      <td>Controls em cada story</td>
+      <td>Aba Controls</td>
+    </tr>
+    <tr>
+      <td>Mock de requisições</td>
+      <td>MSW via <code>msw-storybook-addon</code></td>
+      <td>Stories de <code>Pokedex</code> e <code>PokemonDetailModal</code></td>
+    </tr>
+    <tr>
+      <td>Unitários e snapshots</td>
+      <td><code>*.test.ts(x)</code> com Vitest e <code>composeStories</code></td>
+      <td><code>vitest --project unit</code></td>
+    </tr>
+    <tr>
+      <td>E2E</td>
+      <td>Playwright contra o app Next com PokeAPI interceptada</td>
+      <td><code>playwright test --project app-desktop</code></td>
+    </tr>
+  </tbody>
+</table>
