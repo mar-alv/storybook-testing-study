@@ -1,0 +1,19 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Introdução/Estratégia de testes" />
+
+# Estratégia de testes com Storybook
+
+Cada story é um cenário reproduzível. O mesmo arquivo alimenta documentação, desenvolvimento, revisão visual e automação.
+
+| Tipo de teste | Onde está | Como roda |
+| --- | --- | --- |
+| Renderização e estados | Stories com `args` (Loading, Disabled, Empty, ApiError) | Painel de testes e `vitest --project storybook` |
+| Interação | Funções `play` (cliques, teclado, foco, paginação, modal) | Aba Interactions e Vitest |
+| Acessibilidade | `addon-a11y` com `test: 'error'` e stories legadas em `A11y/*` | Aba Accessibility, Vitest e Playwright com axe |
+| Regressão visual | Chromatic e `toHaveScreenshot` do Playwright | `npx chromatic` e `playwright test --project storybook` |
+| Responsividade | Stories `Mobile` e `Tablet` com global `viewport` | Toolbar de viewport e snapshots por viewport |
+| Estados via props | Controls em cada story | Aba Controls |
+| Mock de requisições | MSW via `msw-storybook-addon` | Stories de `Pokedex` e `PokemonDetailModal` |
+| Unitários e snapshots | `*.test.ts(x)` com Vitest e `composeStories` | `vitest --project unit` |
+| E2E | Playwright contra o app Next com PokeAPI interceptada | `playwright test --project app-desktop` |
