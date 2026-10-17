@@ -73,4 +73,11 @@ describe("Pagination", () => {
       .getAllByRole("button")
       .forEach((button) => expect(button).toBeDisabled());
   });
+
+	it("matches the snapshot", () => {
+    const { container } = render(
+      <Pagination currentPage={3} totalPages={10} onPageChange={vi.fn()} />,
+    );
+    expect(container).toMatchSnapshot();
+  });
 });

@@ -1,0 +1,42 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`FeedbackMessage > matches the snapshot for empty 1`] = `
+<div>
+  <div
+    class="flex flex-col items-center gap-3 rounded-xl border p-8 text-center border-slate-200 bg-slate-50 text-slate-900"
+    role="status"
+  >
+    <p
+      class="text-base font-bold"
+    >
+      Nenhum Pokémon encontrado
+    </p>
+  </div>
+</div>
+`;
+
+exports[`FeedbackMessage > matches the snapshot for error 1`] = `
+<div>
+  <div
+    class="flex flex-col items-center gap-3 rounded-xl border p-8 text-center border-red-200 bg-red-50 text-red-900"
+    role="alert"
+  >
+    <p
+      class="text-base font-bold"
+    >
+      Algo deu errado
+    </p>
+    <p
+      class="text-sm"
+    >
+      Falha ao carregar dados (500)
+    </p>
+    <button
+      class="inline-flex items-center justify-center gap-2 rounded-lg font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-600 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 bg-red-700 text-white hover:bg-red-800 h-10 px-4 text-sm"
+      type="button"
+    >
+      Tentar novamente
+    </button>
+  </div>
+</div>
+`;

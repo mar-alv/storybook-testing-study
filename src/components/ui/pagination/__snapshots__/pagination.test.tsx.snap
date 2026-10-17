@@ -1,0 +1,96 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Pagination > matches the snapshot 1`] = `
+<div>
+  <nav
+    aria-label="Paginação"
+    class="flex items-center justify-between gap-2 sm:justify-center"
+  >
+    <button
+      class="inline-flex items-center justify-center gap-2 rounded-lg font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-600 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 border border-slate-300 bg-white text-slate-900 hover:bg-slate-50 h-8 px-3 text-sm"
+      type="button"
+    >
+      Anterior
+    </button>
+    <p
+      class="text-sm font-medium text-slate-700 sm:hidden"
+    >
+      Página 
+      3
+       de 
+      10
+    </p>
+    <ul
+      class="hidden items-center gap-1 sm:flex"
+    >
+      <li>
+        <button
+          aria-label="Página 1"
+          class="inline-flex items-center justify-center gap-2 rounded-lg font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-600 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 text-slate-800 hover:bg-slate-100 h-8 px-3 text-sm min-w-8"
+          type="button"
+        >
+          1
+        </button>
+      </li>
+      <li>
+        <button
+          aria-label="Página 2"
+          class="inline-flex items-center justify-center gap-2 rounded-lg font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-600 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 text-slate-800 hover:bg-slate-100 h-8 px-3 text-sm min-w-8"
+          type="button"
+        >
+          2
+        </button>
+      </li>
+      <li>
+        <button
+          aria-current="page"
+          aria-label="Página 3"
+          class="inline-flex items-center justify-center gap-2 rounded-lg font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-600 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 bg-red-700 text-white hover:bg-red-800 h-8 px-3 text-sm min-w-8"
+          type="button"
+        >
+          3
+        </button>
+      </li>
+      <li>
+        <button
+          aria-label="Página 4"
+          class="inline-flex items-center justify-center gap-2 rounded-lg font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-600 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 text-slate-800 hover:bg-slate-100 h-8 px-3 text-sm min-w-8"
+          type="button"
+        >
+          4
+        </button>
+      </li>
+      <li>
+        <button
+          aria-label="Página 5"
+          class="inline-flex items-center justify-center gap-2 rounded-lg font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-600 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 text-slate-800 hover:bg-slate-100 h-8 px-3 text-sm min-w-8"
+          type="button"
+        >
+          5
+        </button>
+      </li>
+      <li
+        aria-hidden="true"
+        class="px-2 text-slate-600"
+      >
+        …
+      </li>
+      <li>
+        <button
+          aria-label="Página 10"
+          class="inline-flex items-center justify-center gap-2 rounded-lg font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-600 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 text-slate-800 hover:bg-slate-100 h-8 px-3 text-sm min-w-8"
+          type="button"
+        >
+          10
+        </button>
+      </li>
+    </ul>
+    <button
+      class="inline-flex items-center justify-center gap-2 rounded-lg font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-600 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 border border-slate-300 bg-white text-slate-900 hover:bg-slate-50 h-8 px-3 text-sm"
+      type="button"
+    >
+      Próxima
+    </button>
+  </nav>
+</div>
+`;

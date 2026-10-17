@@ -1,0 +1,81 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`PokemonTypeBadge > matches the snapshot for electric 1`] = `
+<div>
+  <span
+    class="inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold bg-yellow-100 text-yellow-900"
+  >
+    Electric
+  </span>
+</div>
+`;
+
+exports[`PokemonTypeBadge > matches the snapshot for fire 1`] = `
+<div>
+  <span
+    class="inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold bg-orange-100 text-orange-900"
+  >
+    Fire
+  </span>
+</div>
+`;
+
+exports[`PokemonTypeBadge > matches the snapshot for flying 1`] = `
+<div>
+  <span
+    class="inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold bg-sky-100 text-sky-900"
+  >
+    Flying
+  </span>
+</div>
+`;
+
+exports[`PokemonTypeBadge > matches the snapshot for grass 1`] = `
+<div>
+  <span
+    class="inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold bg-green-100 text-green-900"
+  >
+    Grass
+  </span>
+</div>
+`;
+
+exports[`PokemonTypeBadge > matches the snapshot for normal 1`] = `
+<div>
+  <span
+    class="inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold bg-stone-200 text-stone-900"
+  >
+    Normal
+  </span>
+</div>
+`;
+
+exports[`PokemonTypeBadge > matches the snapshot for poison 1`] = `
+<div>
+  <span
+    class="inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold bg-purple-100 text-purple-900"
+  >
+    Poison
+  </span>
+</div>
+`;
+
+exports[`PokemonTypeBadge > matches the snapshot for shadow 1`] = `
+<div>
+  <span
+    class="inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold bg-slate-200 text-slate-900"
+  >
+    Shadow
+  </span>
+</div>
+`;
+
+exports[`PokemonTypeBadge > matches the snapshot for water 1`] = `
+<div>
+  <span
+    class="inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold bg-blue-100 text-blue-900"
+  >
+    Water
+  </span>
+</div>
+`;
